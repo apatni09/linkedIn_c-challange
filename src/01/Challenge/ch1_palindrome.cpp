@@ -6,32 +6,37 @@
 
 #include <iostream>
 #include <algorithm>
-using namespace std;
+
 // is_palindrome()
 // Summary: This function receives a string and returns true if the string is a palindrome, false otherwise.
 // Arguments:
 //           str: The string to analyze.
 // Returns: A boolean value. True for palindromes, false otherwise.
-bool is_palindrome(string str){
+bool is_palindrome(std::string str){
 
     // Write your code here
-    int n=str.length();
-    for(int i=0;i<n/2;i++)
-    {
-        if(str[i]!=str[n-1-i])
-        {
-            return false;
-        }
-    }
+    // int n=str.length();
+    // for(int i=0;i<n/2;i++)
+    // {
+    //     if(str[i]!=str[n-1-i])
+    //     {
+    //         return false;
+    //     }
+    // }
+    // return true;
+    std::transform(str.begin(), str.end(), str.begin(),tolower);
+    std::string rev=str;
+    std::reverse(rev.begin(),rev.end());
+    return str==rev;
+    
 
-    return true;
 }
 
 // Main function
 int main(){
-    string s;
-    cout << "Enter a string: " <<flush;
-    getline(cin,s);
-    cout << "\n\"" << s << (is_palindrome(s) ? "\" is" : "\" is not" ) << " a palindrome.\n\n";
+    std::string s;
+    std::cout << "Enter a string: " <<std::flush;
+    std::getline(std::cin,s);
+    std::cout << "\n\"" << s <<(is_palindrome(s) ? "\" is" : "\" is not" ) << " a palindrome.\n\n";
     return 0;
 }
